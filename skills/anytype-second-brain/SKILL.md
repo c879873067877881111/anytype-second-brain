@@ -67,7 +67,11 @@ API 使用 `mcp__anytype__API-*` tools。需要時 ToolSearch 載入：search-sp
 5. **`relates_to` 等 objects property 是 array — update 時整個替換**，要保留舊值就要先 get、append 新 ID、再 update 整個 array。
 6. **`backlinks` 自動雙向**：A 設 relates_to=[B] 後，B 的 backlinks 自動含 A。但 backlinks 是泛型（含所有 incoming reference），沒有語意分類，所以 relates_to 仍要雙向 set 才能在 UI relates_to section 看到反向。
 7. **`relates_to` / `derived_from` / `touched_on` 都會反映在內建 `links` 欄位**（outgoing object refs 全集合）。
-8. **Markdown body 吞空白行**：傳 `\n\n` 會被存成 `   \n`（hard break + 單 newline），效果是同一 paragraph 內換行（`<br>`），不是 paragraph break。多段 body 想視覺分塊只能靠 headings (`##`) 或 list；純文字段落會被壓在一起。
+8. **Markdown body 的兩種儲存模式**（實測）：
+   - **傳純單 `\n`**（無空白行）：原樣保留，只在最末行尾加 `   \n`（end-of-content marker）。例：傳 `text1\ntext2` → 存 `text1\ntext2   \n`。
+   - **傳含 `\n\n` 空白行**：觸發 normalize，把空行轉成 hard break — 開頭加 `   \n`、每段尾改成 `   \n`。例：傳 `text1\n\ntext2` → 存 `   \ntext1   \ntext2   \n`。
+   - 渲染上兩者類似（`   \n` 是 markdown hard break = `<br>`，跟單 `\n` 都是「同一 paragraph 內換行」），都**不是 paragraph break**。
+   - 結論：要視覺分塊請用 headings (`##`) 或 list；純文字段落空行無效；append-to-list 場景（`/daily`）用單 `\n` 寫入最乾淨。
 
 ## Core principles
 
