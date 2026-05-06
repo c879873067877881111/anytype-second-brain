@@ -70,6 +70,8 @@ iv. **`$ARGUMENTS` 非空**：
 
 ## Step 3 — Display
 
+`<body>` 用 **Step 2b ii 的 `current_body`**（已剝掉 description prepend）。Step 2a 走來的（剛 create）用本次寫入的 body。**不要直接顯示 `markdown` 欄位**，否則 description 會被印兩次（一次在標題行的 `· <description>`、一次在 body 開頭）。
+
 ```
 📅 today<description if non-empty: ` · <description>`>
 
@@ -78,7 +80,7 @@ iv. **`$ARGUMENTS` 非空**：
 <count> entries · <touched_count> topics touched
 ```
 
-- `count` = body 中 `[HH:MM]` 出現次數（regex `^\[\d{2}:\d{2}\]`）
+- `count` = body 中 `[HH:MM]` 行首出現次數。pattern `\[\d{2}:\d{2}\]` 全文 scan；若用 `^\[\d{2}:\d{2}\]` 必須配 multiline flag (`(?m)`)，否則只 match 字串開頭 1 次。
 - `touched_count` = `touched_on` array 長度（不要 enumerate Topic names — Anytype UI 自己顯示）
 
 ## Anti-patterns
@@ -122,6 +124,6 @@ iv. **`$ARGUMENTS` 非空**：
 /daily chris 回我的 thread，他主要擔心 vendor lock-in
 ```
 → search 找到 → get current_body = "[09:23] 早上跟 chris 同步..."
-→ new_body = current_body + "\n\n[16:02] chris 回我的 thread，他主要擔心 vendor lock-in"
+→ new_body = current_body + "\n[16:02] chris 回我的 thread，他主要擔心 vendor lock-in"
 → update
 → Display: "2 entries · 0 topics touched"
