@@ -1,13 +1,5 @@
 # anytype-second-brain
 
-`#anytype` `#claude-code` `#claude-skill` `#second-brain` `#llm-wiki` `#knowledge-management` `#mcp` `#karpathy-wiki`
-
-An LLM-rewritten wiki for [Anytype](https://anytype.io/), built as a Claude Code skill.
-
-Inspired by [Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): every new piece of information **merges into existing Topic pages** instead of appending new notes. Contradictions stay visible, aliases prevent fragmentation, the wiki rewrites itself.
-
-> Same idea as [eugeniughelbur/obsidian-second-brain](https://github.com/eugeniughelbur/obsidian-second-brain), but for Anytype's typed-object data model rather than Obsidian markdown files. Different storage layer → different schema design.
-
 ## Status
 
 **WIP — 3/7 commands done.**
