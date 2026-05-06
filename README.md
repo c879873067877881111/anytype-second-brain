@@ -35,6 +35,7 @@ git clone <this repo> ~/projects/anytype-second-brain
 ln -s ~/projects/anytype-second-brain/skills/anytype-second-brain ~/.claude/skills/anytype-second-brain
 ln -s ~/projects/anytype-second-brain/commands/capture.md ~/.claude/commands/capture.md
 ln -s ~/projects/anytype-second-brain/commands/find.md ~/.claude/commands/find.md
+ln -s ~/projects/anytype-second-brain/commands/daily.md ~/.claude/commands/daily.md
 ```
 
 Then update `skills/anytype-second-brain/SKILL.md` with **your own** space ID, type IDs and tag IDs (the ones in there are the author's space — they will not work for you).
