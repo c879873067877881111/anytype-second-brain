@@ -1,5 +1,7 @@
 # anytype-second-brain
 
+`#anytype` `#claude-code` `#claude-skill` `#second-brain` `#llm-wiki` `#knowledge-management` `#mcp` `#karpathy-wiki`
+
 An LLM-rewritten wiki for [Anytype](https://anytype.io/), built as a Claude Code skill.
 
 Inspired by [Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): every new piece of information **merges into existing Topic pages** instead of appending new notes. Contradictions stay visible, aliases prevent fragmentation, the wiki rewrites itself.
@@ -69,6 +71,15 @@ Anytype's typed objects + relations are a stronger substrate for the LLM-rewriti
 - The LLM can `update-object` a single property without re-serialising the whole file.
 
 The trade-off: `search-space` doesn't index alias text, so `/capture` and `/find` must do an extra alias scan client-side. The skill's `commands/*.md` files document this and other Anytype-specific quirks discovered during testing.
+
+## Related projects
+
+The Anytype team ships its own agent ecosystem. This repo solves a different problem:
+
+- [`anyproto/anytype-mcp`](https://github.com/anyproto/anytype-mcp) — official MCP server. **We use this** as our API transport.
+- [`anyproto/anytype-agents-skill`](https://github.com/anyproto/anytype-agents-skill) + [`anyproto/anytype-agent-runtime`](https://github.com/anyproto/anytype-agent-runtime) — a generic CRUD skill: the agent writes a JavaScript snippet for each request and runs it against Anytype's API. No opinionated schema, no knowledge-management pattern.
+
+**This repo is not a CRUD wrapper.** It's an opinionated knowledge-management framework on top of the MCP server: a fixed `Topic` / `Source` / `Daily` schema, hard rules about merge-vs-append behaviour, and slash-command ergonomics. Use the official skill if you want to script Anytype generally; use this one if you want a Karpathy-style self-rewriting wiki specifically.
 
 ## License
 
