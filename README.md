@@ -10,13 +10,13 @@ Inspired by [Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6
 
 ## Status
 
-**WIP — 2/7 commands done.**
+**WIP — 3/7 commands done.**
 
 | Command | Status | Purpose |
 |---|---|---|
 | `/capture` | ✅ | Merge a thought into matching Topic(s) |
 | `/find` | ✅ | Search Topic / Source / Daily |
-| `/daily` | TODO | Today's Daily entry |
+| `/daily` | ✅ | Show today's Daily, or append `[HH:MM] <text>` log entries |
 | `/ingest` | TODO | URL/video → multi-Topic merge + Source |
 | `/connect` | TODO | Add `relates_to` between Topics |
 | `/reconcile` | TODO | Surface and resolve contradictions |
