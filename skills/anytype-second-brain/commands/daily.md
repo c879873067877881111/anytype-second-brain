@@ -80,7 +80,7 @@ iv. **`$ARGUMENTS` 非空**：
 <count> entries · <touched_count> topics touched
 ```
 
-- `count` = body 中 `[HH:MM]` 行首出現次數。pattern `\[\d{2}:\d{2}\]` 全文 scan；若用 `^\[\d{2}:\d{2}\]` 必須配 multiline flag (`(?m)`)，否則只 match 字串開頭 1 次。
+- `count` = body 中 `[HH:MM]` 行首出現次數。**主方案**：`(?m)^\[\d{2}:\d{2}\]` 配 multiline flag，只 match 行首。簡化方案 `\[\d{2}:\d{2}\]` 全文 scan 會把 entry 內含的時間引用（例：「會議在 [10:30] 開始」）算進去，over-count。沒 multiline 的 `^\[...]` 只 match 字串開頭，永遠返回 1，不要用。
 - `touched_count` = `touched_on` array 長度（不要 enumerate Topic names — Anytype UI 自己顯示）
 
 ## Anti-patterns
