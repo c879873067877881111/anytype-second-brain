@@ -48,10 +48,12 @@ skills/anytype-second-brain/
   commands/
     capture.md          # full /capture flow (6 steps)
     find.md             # full /find flow (5 steps)
+    daily.md            # full /daily flow (3 steps)
 
 commands/
   capture.md            # slash-command entry point → reads SKILL.md + commands/capture.md
   find.md               # slash-command entry point
+  daily.md              # slash-command entry point
 ```
 
 ## Why an Anytype version
